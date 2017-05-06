@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_self">
+  </head>
+  <body>
+    <? var data = valid(); ?>
+    <div style="font-family: sans-serif;">
+    <form id="form" name="form">
+    <? if(Object.prototype.toString.call(data) === '[object Array]') { ?>
+    <? for (var i = 0; i < data.length; i++) { ?>
+    <? for (var j = 0; j < data[i].length; j++) { ?>
+    <input type="checkbox" id="ch<?= '' + i + j ?>" name="ch<?= '' + i + j ?>" value="<?= data[i][j] ?>"><?= data[i][j] ?><br>
+    <? } ?>
+    <? } ?>
+    <? } else { ?>
+    <p>This cell has no Data Validation.</p>
+    <? } ?>
+    <br>
+    <input type="button" value="Select" onclick="google.script.run.fillCell(this.parentNode)" />
+    <input type="button" value="Refresh Validation" onclick="google.script.run.chooseParticipants()" />
+    </form>
+    </div>
+  </body>
+</html>
